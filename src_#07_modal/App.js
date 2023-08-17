@@ -4,10 +4,10 @@ import {useState} from 'react'
 
 function App() {
   let[title, setTitle] = useState(['남자코트 추천', '강남 우동맛집', '파이썬독학']);
-  let [like, setLike ] = useState([0,0,0]);
+  let [like,setLike ] = useState(0);
   let [modal, setModal] = useState(false);
 
- 
+
   return (
     <div className="App">
       <div className='black-nav'>
@@ -27,7 +27,7 @@ function App() {
         setTitle(copy)
       }}>글 수정</button>
 
-      {/* <div className='list'>
+      <div className='list'>
         <h4>{title[0]} <span onClick={()=>{setLike(like+1)}}>👍</span>
         {like}</h4>
         <p>2월 17일 발행</p>
@@ -42,30 +42,11 @@ function App() {
           setModal(!modal)
         }}>{title[2]}</h4>
         <p>2월 17일 발행</p>
-      </div> */}
-
-      {
-        title.map(function(a , i){
-          return (
-            <div className='list' key={i}>
-              <h4 onClick={()=>{setModal(true)}}>
-                {title[i]}
-                <span onClick={()=>{
-                  let copy = [...like]
-                  copy[i]=copy[i]+1
-                  setLike(copy)
-                }}>👍</span>{like[i]}
-              </h4>
-              <p>2월 17일 발행</p>
-            </div>
-          )
-        })
-      }
+      </div>
       
       {
-        modal == true ? <Modal/> : null
+       modal == true ? <Modal/> : null
       }
-
     </div>  
       
   );
