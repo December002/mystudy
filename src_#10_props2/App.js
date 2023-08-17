@@ -1,13 +1,12 @@
-
+import logo from './logo.svg';
 import './App.css';
-import React, {useState} from 'react'
+import {useState} from 'react'
 
 function App() {
   let[title, setTitle] = useState(['남자코트 추천', '강남 우동맛집', '파이썬독학']);
   let [like, setLike ] = useState([0,0,0]);
   let [modal, setModal] = useState(false);
-  let [aTitle, setAtitle] = useState(0);
-  let [iValue, setIValue] = useState('');
+  let [aTitle, setAtitle] = useState(0)
  
  
   return (
@@ -28,8 +27,6 @@ function App() {
         copy[0]="여자코트 추천";
         setTitle(copy)
       }}>글 수정</button>
-
-
 
       {/* <div className='list'>
         <h4>{title[0]} <span onClick={()=>{setLike(like+1)}}>👍</span>
@@ -54,37 +51,22 @@ function App() {
             <div className='list' key={i}>
               <h4 onClick={()=>{setModal(true); setAtitle(i)}}>
                 {title[i]}
-                <span onClick={(e)=>{
-                  e.stopPropagation();
+                <span onClick={()=>{
                   let copy = [...like]
                   copy[i]=copy[i]+1
                   setLike(copy)
                 }}>👍</span>{like[i]}
               </h4>
               <p>2월 17일 발행</p>
-              <button onClick={()=>{
-                let copy=[...title]
-                copy.splice(i, 1);
-                setTitle(copy)
-              }}>글삭제</button>
             </div>
           )
         })
       }
-
-      <input onChange={(e)=>{
-        setIValue(e.target.value); 
-        }}/>
-      <button onClick={()=>{
-        let copy=[...title]
-        copy.push(iValue)
-        setTitle(copy)
-      }}>글 추가</button>  
       
       {
-        modal === true ? <Modal title={title} setTitle={setTitle} aTitle={aTitle}/> : null
+        modal == true ? <Modal title={title} setTitle={setTitle} aTitle={aTitle}/> : null
       }
-      <Modal2></Modal2>
+
     </div>  
       
   );
@@ -104,27 +86,8 @@ function Modal(props){
         <button onClick={()=>{}}>글 수정</button>
       </div>
   )
-} 
-
-
-class Modal2 extends React.Component {
-  constructor(props){
-    super(props);
-    this.state ={
-      name : 'kim',
-      age : 20
-    }
-  }
-  render(){
-    return(
-      <div>안녕 {this.state.name}
-        <button onClick={()=>{
-          this.setState({age : 21})
-        }}>버튼</button>
-      </div>
-    )
-  }
 }
+
 
 
 export default App;
